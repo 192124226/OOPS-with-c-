@@ -1,0 +1,13 @@
+#include<iostream>
+int main(){
+	int quotient, remainder, dividend, divisor;
+	std::cout<<"enter the divisor: ";
+	std::cin>>quotient;
+	std::cout<<"enter the dividend: ";
+	std::cin>>divident;
+	quotient= divident/divisor;
+	remainder= divident%divisor;
+	std::cout<<"quotient: "<<quotient<<std::endl;
+	std::cout<<"remainder: "<<remainder;
+	return 0;
+}
