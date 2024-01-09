@@ -1,0 +1,12 @@
+#include<iostream>
+#include<algorithm>
+int main(){
+	int elements[] = {3, 9, 6, 7, 1};
+	int size = sizeof(elements) / sizeof(elements[0]);
+	std::sort(elements , elements + size);
+	std::cout << "Elements in increasing order: ";
+    for (int i = 0; i < size; ++i) {
+        std::cout << elements[i] << " ";
+    }
+
+}
