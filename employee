@@ -1,0 +1,28 @@
+#include <iostream>
+int main() {
+    char grade;
+    double salary;
+    std::cout << "Enter the grade of the employee: ";
+    std::cin >> grade;
+    std::cout << "Enter the employee salary: ";
+    std::cin >> salary;
+
+    double bonusPercentage;
+    if (grade == 'A') {
+        bonusPercentage = 5.0;
+    } else if (grade == 'B') {
+        bonusPercentage = 10.0;
+    } else {
+        std::cerr << "Invalid grade entered. Please enter A or B." << std::endl;
+        return 1; 
+    }
+    if (salary < 10000) {
+        bonusPercentage += 2.0;
+    }
+    double bonus = (bonusPercentage / 100.0) * salary;
+    double totalSalary = salary + bonus;
+    std::cout << "Salary=" << salary << std::endl;
+    std::cout << "Bonus=" << bonus << std::endl;
+    std::cout << "Total to be paid: " << totalSalary << std::endl;
+    return 0;
+}
