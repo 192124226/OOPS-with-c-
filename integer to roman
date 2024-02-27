@@ -1,0 +1,38 @@
+#include <iomanip>
+#include <map>
+#include <string>
+#include <utility>
+
+std::string intToRoman(int num) {
+    static const std::map<int, std::pair<char, int>> values{
+        {1000, {'M', 1000}}, {900, {'C', 900}},   {500, {'D', 500}},  {400, {'C', 400}},
+        {100,  {'X', 100}},  {90,  {'L', 90}},     {50,  {'V', 50}},    {40,  {'L', 40}},
+        {10,  {'I', 10}},    {9,  {'V', 9}},       {5,  {'V', 5}},     {4,  {'IV', 4}},
+        {1,  {'I', 1}}
+    };
+
+    std::string romanNum;
+    int divisor = 1000;
+    while (num > 0) {
+        auto it = find_if(values.begin(), values.end(), [&](const decltype(values)& entry){
+                           return num >= entry.first && num < divisor;
+                       });
+        
+        if (it != values.end()) {
+            romanNum += std::string(it->second.second / it->first, it->second.first);
+            num -= it->first;
+            divisor /= 10;
+        } else {
+            break;
+        }
+    }
+
+    return romanNum;
+}
+
+int main() {
+    int num = 36;
+    std::cout << "Integer (" << num << ") to Roman Numeral: " << intToRoman(num) << '\n';
+
+    return 0;
+}
