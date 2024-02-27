@@ -1,0 +1,19 @@
+#include<iostream>
+using namespace std;
+class book{
+	private:
+		string title;
+		string author;
+		int year;
+	public:
+		book(const string&title, const string&author, int year): title(title), author(author), year(year){
+			cout<<"creat a book "<<title<<endl;
+		}
+		~book(){
+			cout<<"destroy the book: "<<title<< endl;
+		}
+};
+int main(){
+	book book1("atomic habits", "obama", 2005);
+	return 0;
+}
