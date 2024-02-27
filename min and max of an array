@@ -1,0 +1,15 @@
+#include<iostream>
+using namespace std;
+int min(int arr[], int n){
+	return min(arr, arr+n);
+}
+int max(int arr[], int n){
+	return max(arr, arr+n);
+}
+int main(){
+	int arr[]= {45, 7, 89, 34, 6, 81};
+	int n= sizeoff(arr)/ sizeoff(arr[0]);
+	cout<<"maxinum element of array: ";
+	cout<<"mininum element of array: ";
+	return 0;
+}
