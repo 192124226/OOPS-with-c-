@@ -1,0 +1,70 @@
+struct ListNode {
+    int data;
+    ListNode* prev;
+    ListNode* next;
+    ListNode(int d):data(d), prev(NULL), next(NULL) {};
+};
+
+ListNode* swapNodes(ListNode* head) {
+    if(!head || !head->next) return head;
+
+    ListNode* prev = NULL, *cur = head, *temp1, *temp2, *next;
+
+    while(cur && cur->next) {
+        temp1 = cur->next;
+        next = temp1->next;
+
+        if(!prev) {
+            head = temp1;
+        } else {
+            prev->next = temp1;
+        }
+
+        temp1->prev = prev;
+        temp1->next = cur;
+
+        if(cur->next) cur->next->prev = temp1;
+
+        cur->next = next;
+        if(next) next->prev = cur;
+
+        prev = cur;
+        cur = next;
+    }
+
+    return head;
+}
+
+// Helper functions to print and initialize lists
+void printList(ListNode* head) {
+    ListNode* curr = head;
+    while(curr) {
+        cout<<curr->data<<" ";
+        curr = curr->next;
+    }
+    cout<<endl;
+}
+
+ListNode* buildList(vector<int>& arr) {
+    ListNode* head = NULL;
+    ListNode* tail = NULL;
+    for(auto elem : arr) {
+        ListNode* newNode = new ListNode(elem);
+        if(!head) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            tail->next = newNode;
+            newNode->prev = tail;
+            tail = newNode;
+        }
+    }
+    return head;
+}
+
+int main() {
+    vector<int> arr = {1, 2, 3, 4, 5};
+    ListNode* head = buildList(arr);
+    printList(swapNodes(head));
+    return 0;
+}
