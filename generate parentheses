@@ -1,0 +1,35 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+void generateParenthesesHelper(std::vector<std::string>& result, std::string current, int open, int close, int max) {
+    if (current.size() == max * 2) {
+        result.push_back(current);
+        return;
+    }
+
+    if (open < max) {
+        generateParenthesesHelper(result, current + '(', open + 1, close, max);
+    }
+    if (close < open) {
+        generateParenthesesHelper(result, current + ')', open, close + 1, max);
+    }
+}
+
+std::vector<std::string> generateParentheses(int n) {
+    std::vector<std::string> result;
+    generateParenthesesHelper(result, "", 0, 0, n);
+    return result;
+}
+
+int main() {
+    int n = 3;
+    std::vector<std::string> validParentheses = generateParentheses(n);
+
+    std::cout << "Valid combinations of " << n << " pairs of parentheses:" << std::endl;
+    for (const auto& parentheses : validParentheses) {
+        std::cout << parentheses << std::endl;
+    }
+
+    return 0;
+}
