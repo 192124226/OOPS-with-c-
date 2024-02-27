@@ -1,0 +1,9 @@
+#include<iostream>
+using namespace std;
+int main(){
+	string first("simats school");
+	string add("of engineering");
+	first = first + add;
+	cout<< first<< endl;
+	return 0;
+}
